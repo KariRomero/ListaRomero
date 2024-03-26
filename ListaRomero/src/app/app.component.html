@@ -1,0 +1,58 @@
+<div>
+  <h1 class="text-center mt-5">Listado de alumnos</h1>
+<h2 class="text-center">Asistencia</h2>
+
+<div class="d-flex justify-content-around">
+  <button 
+  (click)="togglePresentes()"
+  class="btn btn-success"
+  >
+  Mostrar Presentes</button>
+
+  <button 
+  (click)="toggleAusentes()"
+  class="btn btn-danger"
+  >Mostrar Ausentes</button>
+</div>
+
+<div class="d-flex justify-content-around">
+  <div>
+    <h3 
+    *ngIf="mostrarPresentes"
+    class="mt-5"
+    >Presentes</h3>
+    <ul *ngIf="mostrarPresentes">
+      <li 
+      *ngFor="let student of presentStudents()" 
+      [ngClass]="student.presente ? 'presente' : 'ausente'">
+        {{ student.apellido | uppercase }}, {{ student.nombre }} 
+      </li>
+    </ul>
+  </div>
+  
+  <div>
+    <h3 
+    *ngIf="mostrarAusentes"
+    class="mt-5"
+    >Ausentes</h3>
+    <ul *ngIf="mostrarAusentes">
+      <li 
+      *ngFor="let student of absentStudents()"
+      [ngClass]="student.presente ? 'presente' : 'ausente'">
+        {{ student.apellido | uppercase }}, {{ student.nombre }} 
+      </li>
+    </ul>
+  </div>
+
+  
+</div>
+
+</div>
+
+
+
+
+
+
+
+
